@@ -1,74 +1,82 @@
-// Simulação do banco de dados (inicialmente em JSON)
-let bancoDados = {
-    empresas: [],
-    clientes: [],
-    agendamentos: []
-};
+function verificarCadastro() {
+    const usuarioCadastrado = localStorage.getItem('usuarioCadastrado');
 
-// Cadastro de empresa
-document.getElementById('form-empresa').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const nome = document.getElementById('nome-empresa').value;
-    const servicos = document.getElementById('servicos-empresa').value.split(',');
-    bancoDados.empresas.push({ nome, servicos });
-    atualizarSelectEmpresas();
-});
-
-// Cadastro de cliente
-document.getElementById('form-cliente').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const nome = document.getElementById('nome-cliente').value;
-    const email = document.getElementById('email-cliente').value;
-    bancoDados.clientes.push({ nome, email });
-});
-
-// Atualizar select de empresas
-function atualizarSelectEmpresas() {
-    const selectEmpresa = document.getElementById('select-empresa');
-    selectEmpresa.innerHTML = '<option value="">Selecione a Empresa</option>';
-    bancoDados.empresas.forEach((empresa, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = empresa.nome;
-        selectEmpresa.appendChild(option);
-    });
-}
-
-// Atualizar select de serviços
-document.getElementById('select-empresa').addEventListener('change', function() {
-    const empresaIndex = this.value;
-    const selectServico = document.getElementById('select-servico');
-    selectServico.innerHTML = '<option value="">Selecione o Serviço</option>';
-    if (empresaIndex !== '') {
-        const empresa = bancoDados.empresas[empresaIndex];
-        empresa.servicos.forEach(servico => {
-            const option = document.createElement('option');
-            option.textContent = servico.trim();
-            selectServico.appendChild(option);
-        });
+    if (usuarioCadastrado) {
+        window.location.href = 'telaPrincipal.html';
+    } else {
+        alert('Você precisa se cadastrar para acessar a tela principal.');
+        window.location.href = 'login.html#registro';
     }
-});
-
-// Agendar serviço
-document.getElementById('btn-agendar').addEventListener('click', function() {
-    const empresaIndex = document.getElementById('select-empresa').value;
-    const servico = document.getElementById('select-servico').value;
-    const data = document.getElementById('data-agendamento').value;
-    bancoDados.agendamentos.push({ empresa: bancoDados.empresas[empresaIndex].nome, servico, data });
-    atualizarListaAgendamentos();
-});
-
-// Atualizar lista de agendamentos
-function atualizarListaAgendamentos() {
-    const listaAgendamentos = document.getElementById('lista-agendamentos-ul');
-    listaAgendamentos.innerHTML = '';
-    bancoDados.agendamentos.forEach(agendamento => {
-        const item = document.createElement('li');
-        item.textContent = `${agendamento.empresa} - ${agendamento.servico} - ${agendamento.data}`;
-        listaAgendamentos.appendChild(item);
-    });
 }
 
-// Inicialização
-atualizarSelectEmpresas();
-atualizarListaAgendamentos();
+function registrarUsuario(event) {
+    event.preventDefault();
+
+    if (validarRegistro(event)) {
+        // Simula o registro do usuário (adapte para o seu backend)
+        localStorage.setItem('usuarioCadastrado', true);
+        window.location.href = 'telaPrincipal.html';
+    }
+}
+
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function validarSenhaForte(senha) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(senha);
+}
+
+function validarRegistro(event) {
+    const email = document.getElementById('email-registro').value;
+    const senha = document.getElementById('password-registro').value;
+
+    if (email === '' || senha === '') {
+        alert('Por favor, preencha todos os campos.');
+        event.preventDefault();
+        return false;
+    }
+
+    if (!validarEmail(email)) {
+        alert('Por favor, insira um email válido.');
+        event.preventDefault();
+        return false;
+    }
+
+    if (!validarSenhaForte(senha)) {
+        alert('A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.');
+        event.preventDefault();
+        return false;
+    }
+
+    // Aqui você adicionaria a lógica para enviar os dados para o servidor e registrar o usuário
+    return true;
+}
+
+function validarLogin(event) {
+    const email = document.getElementById('email-login').value;
+    const senha = document.getElementById('password-login').value;
+
+    if (email === '' || senha === '') {
+        alert('Por favor, preencha todos os campos.');
+        event.preventDefault();
+        return false;
+    }
+
+    // Aqui você precisaria adicionar a lógica para verificar se o email e senha correspondem a um usuário cadastrado
+    // Exemplo fictício:
+    if (email === 'usuario@exemplo.com' && senha === 'senha123') {
+        return true; // Login bem-sucedido
+    } else {
+        alert('E-mail ou senha incorretos.');
+        event.preventDefault(); // Impede o envio do formulário
+        return false;
+    }
+    
+}
+
+document.getElementById('continuar-sem-login').addEventListener('click', verificarCadastro);
+
+

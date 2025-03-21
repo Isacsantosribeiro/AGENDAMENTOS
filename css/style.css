@@ -2,26 +2,112 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f8ff; /* Azul claro como fundo */
+    color: #333;
 }
 
-header {
-    background-color: #333;
+.header {
+    background-color: #1e90ff; /* Azul como cabeçalho */
     color: white;
     text-align: center;
     padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-main {
+.header__title {
+    margin: 0 1rem;
+}
+
+.notification {
+    position: relative;
+    margin: 0 1rem;
+}
+
+.notification__icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.notification__list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+    display: none; /* Oculta a lista inicialmente */
+}
+
+.notification:hover .notification__list {
+    display: block; /* Exibe a lista ao passar o mouse */
+}
+
+.main {
     padding: 2rem;
 }
 
-section {
+.section {
     margin-bottom: 2rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input, select, button {
+.section__title {
+    color: #1e90ff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__input, .form__button {
     display: block;
-    margin-bottom: 0.5rem;
+    width: calc(100% - 22px);
     padding: 0.5rem;
-    width: 300px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form__button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form__button:hover {
+    background-color: #187bcd;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header__title, .notification {
+        margin: 0.5rem 1rem;
+    }
 }
