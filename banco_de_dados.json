@@ -1,8 +1,52 @@
-
-
 {
-    "empresas": [],
-    "clientes": [],
-    "agendamentos": [],
-    "orcamentos": []
-}
+    "empresas": [
+      {
+        "id": 1,
+        "nome": "Banda RockStar",
+        "email": "contato@bandarockstar.com",
+        "senha": "hashedSenhaAqui",
+        "servicos": [
+          {
+            "id": 1,
+            "descricao": "Show ao vivo",
+            "valorBase": 1500
+          },
+          {
+            "id": 2,
+            "descricao": "Evento corporativo",
+            "valorBase": 2000
+          }
+        ]
+      }
+    ],
+    "clientes": [
+      {
+        "id": 1,
+        "nome": "João Silva",
+        "email": "joao.silva@email.com",
+        "telefone": "11999999999"
+      }
+    ],
+    "agendamentos": [
+      {
+        "id": 1,
+        "empresaId": 1,
+        "clienteId": 1,
+        "data": "2025-04-30",
+        "horario": "20:00",
+        "status": "pendente"
+      }
+    ],
+    "orcamentos": [
+      {
+        "id": 1,
+        "empresaId": 1,
+        "clienteId": 1,
+        "servicoId": 1,
+        "valor": 1600,
+        "dataSolicitacao": "2025-04-01",
+        "status": "aprovado"
+      }
+    ]
+  }
+  

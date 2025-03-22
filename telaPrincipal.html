@@ -7,28 +7,70 @@
     <link rel="stylesheet" href="css/telaPrincipal.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header class="header">
-        <h1 class="header__title">Bem-vindo!</h1>
+        <h1 class="header__title">Sistema de Orçamentos</h1>
+        <nav class="header__nav">
+            <ul class="nav__list">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Orçamentos</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
         <div class="notification">
-            <span class="notification__icon">🔔</span>
-            <ul class="notification__list" id="lista-notificacoes"></ul>
+            <button id="notification-btn">🔔 <span id="notification-count">3</span></button>
+            <ul id="notification-list" class="hidden">
+                <li>Nova solicitação de orçamento</li>
+                <li>Orçamento aprovado</li>
+                <li>Agendamento confirmado</li>
+            </ul>
         </div>
     </header>
-    <main class="main">
-        <section class="section" id="cadastro-orcamento">
-            <h2 class="section__title">Cadastro de Orçamento</h2>
-            <form class="form" id="form-orcamento">
-                <input class="form__input" type="text" id="nome-cliente" placeholder="Nome do Cliente">
-                <input class="form__input" type="text" id="servico" placeholder="Serviço">
-                <input class="form__input" type="number" id="valor" placeholder="Valor">
-                <button class="form__button" type="submit">Cadastrar</button>
-            </form>
-        </section>
-        <section class="section" id="lista-orcamentos">
-            <h2 class="section__title">Orçamentos</h2>
-            <ul class="list" id="lista-orcamentos-ul"></ul>
-        </section>
-    </main>
+
+    <!-- Área principal -->
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Meus Orçamentos</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <!-- Cadastro de Orçamento -->
+            <section class="form-section">
+                <h2>Cadastrar Novo Orçamento</h2>
+                <form id="form-orcamento">
+                    <label for="nome-cliente">Nome do Cliente:</label>
+                    <input type="text" id="nome-cliente" placeholder="Digite o nome" required>
+
+                    <label for="servico">Serviço:</label>
+                    <input type="text" id="servico" placeholder="Informe o serviço" required>
+
+                    <label for="valor">Valor:</label>
+                    <input type="number" id="valor" placeholder="Digite o valor" required>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </section>
+
+            <!-- Lista de Orçamentos -->
+            <section class="list-section">
+                <h2>Orçamentos Cadastrados</h2>
+                <ul id="lista-orcamentos"></ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2025 - Sistema de Orçamentos</p>
+    </footer>
+
     <script src="js/telaPrincipal.js"></script>
 </body>
 </html>

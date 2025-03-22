@@ -1,113 +1,168 @@
-body {
-    font-family: sans-serif;
+/* ==============================
+   Variáveis (CSS Custom Properties)
+   ============================== */
+   :root {
+    --primary-color: #1e90ff;      /* Azul principal */
+    --primary-color-hover: #187bcd;/* Azul escurecido para hover */
+    --bg-color: #f0f8ff;          /* Azul claro do fundo */
+    --text-color: #333;           /* Cor padrão do texto */
+    --white: #ffffff;             /* Cor branca */
+    --border-color: #ccc;         /* Cor padrão de bordas */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Cor de sombra */
+  }
+  
+  /* ==============================
+     Reset básico / Body
+     ============================== */
+  body {
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff; /* Azul claro como fundo */
-    color: #333;
-}
-
-.header {
-    background-color: #1e90ff; /* Azul como cabeçalho */
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* ==============================
+     Cabeçalho (Header)
+     ============================== */
+  .header {
+    background-color: var(--primary-color);
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.header__title {
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  .header__title {
     margin: 0 1rem;
-}
-
-.notification {
+  }
+  
+  /* ==============================
+     Notificações
+     ============================== */
+  .notification {
     position: relative;
     margin: 0 1rem;
-}
-
-.notification__icon {
+  }
+  
+  .notification__icon {
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-.notification__list {
+  }
+  
+  .notification__list {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 0.5rem;
     list-style: none;
     margin: 0;
-    display: none; /* Oculta a lista inicialmente */
-}
-
-.notification:hover .notification__list {
-    display: block; /* Exibe a lista ao passar o mouse */
-}
-
-.main {
+    display: none;
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+  
+  .notification:hover .notification__list {
+    display: block;
+  }
+  
+  /* ==============================
+     Conteúdo Principal
+     ============================== */
+  .main {
     padding: 2rem;
-}
-
-.section {
+  }
+  
+  /* ==============================
+     Seções / Cards
+     ============================== */
+  .section {
     margin-bottom: 2rem;
-    background-color: white;
+    background-color: var(--white);
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.section__title {
-    color: #1e90ff;
+    box-shadow: 0 2px 4px var(--shadow-color);
+  }
+  
+  .section__title {
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: 1rem;
-}
-
-.form__input, .form__button {
+  }
+  
+  /* ==============================
+     Formulários
+     ============================== */
+  .form__input, .form__button {
     display: block;
-    width: calc(100% - 22px);
+    width: 100%;
+    max-width: 400px; /* Exemplo de largura máxima para centralizar */
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ccc;
+    margin: 0.5rem auto; /* Centraliza horizontalmente e dá espaço vertical */
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.form__button {
-    background-color: #1e90ff;
-    color: white;
+  }
+  
+  .form__input {
+    border: 1px solid var(--border-color);
+  }
+  
+  .form__button {
+    background-color: var(--primary-color);
+    color: var(--white);
     border: none;
     cursor: pointer;
-}
-
-.form__button:hover {
-    background-color: #187bcd;
-}
-
-.list {
+    transition: background-color 0.3s ease;
+  }
+  
+  .form__button:hover {
+    background-color: var(--primary-color-hover);
+  }
+  
+  /* ==============================
+     Listas
+     ============================== */
+  .list {
     list-style: none;
     padding: 0;
-}
-
-.list li {
+    margin: 0;
+  }
+  
+  .list li {
     padding: 0.5rem;
     border-bottom: 1px solid #eee;
-}
-
-.list li:last-child {
+  }
+  
+  .list li:last-child {
     border-bottom: none;
-}
-
-/* Estilos responsivos */
-@media (max-width: 600px) {
+  }
+  
+  /* ==============================
+     Responsividade
+     ============================== */
+  @media (max-width: 600px) {
     .header {
-        flex-direction: column;
-        align-items: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
     }
-
-    .header__title, .notification {
-        margin: 0.5rem 1rem;
+  
+    .header__title,
+    .notification {
+      margin: 0.5rem 1rem;
     }
-}
+  
+    .main {
+      padding: 1rem;
+    }
+    
+    /* Você pode ajustar ainda mais seções/formulários para telas pequenas */
+    .form__input,
+    .form__button {
+      max-width: 100%;
+    }
+  }
+  

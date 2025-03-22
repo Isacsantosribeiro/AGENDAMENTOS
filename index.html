@@ -1,113 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Registro</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f8ff;
-        }
-
-        main {
-            width: 300px;
-        }
-
-        #login, #registro {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1e90ff;
-        }
-
-        form input {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1e90ff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #187bcd;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Registro</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f8ff;
+    }
+    main {
+      width: 300px;
+    }
+    #login, #registro {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      border: 1px solid #e0e0e0;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e90ff;
+    }
+    form input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1e90ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #187bcd;
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <section id="login">
-            <h2>Login</h2>
-            <form id="form-login" onsubmit="validarLogin(event)">
-                <input type="email" id="email-login" placeholder="Seu E-mail">
-                <input type="password" id="password-login" placeholder="Sua Senha">
-                <button type="submit">Entrar</button>
-            </form>
-        </section>
-        <section id="registro">
-            <h2>Registro</h2>
-            <form id="form-registro" onsubmit="validarRegistro(event)">
-                <input type="email" id="email-registro" placeholder="Seu E-mail">
-                <input type="password" id="password-registro" placeholder="Sua Senha">
-                <button type="submit">Registrar</button>
-            </form>
-        </section>
-    </main>
-
-    <script>
-        function validarLogin(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
-            const email = document.getElementById('email-login').value;
-            const senha = document.getElementById('password-login').value;
-
-            if (email === '' || senha === '') {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-
-            // Aqui você pode adicionar a lógica de autenticação do usuário
-            // Se o login for bem-sucedido, redirecione para telaPrincipal.html
-            window.location.href = 'telaPrincipal.html';
-        }
-
-        function validarRegistro(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
-            const email = document.getElementById('email-registro').value;
-            const senha = document.getElementById('password-registro').value;
-
-            if (email === '' || senha === '') {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-
-            // Aqui você pode adicionar a lógica de registro do usuário
-            // Se o registro for bem-sucedido, redirecione para telaPrincipal.html ou exiba uma mensagem de sucesso
-            window.location.href = 'telaPrincipal.html';
-        }
-    </script>
+  <main>
+    <section id="login">
+      <h2>Login</h2>
+      <form id="form-login" onsubmit="validarLogin(event)">
+        <input type="email" id="email-login" placeholder="Seu E-mail">
+        <input type="password" id="password-login" placeholder="Sua Senha">
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+    <section id="registro">
+      <h2>Registrar</h2>
+      <form id="form-registro" onsubmit="validarRegistro(event)">
+        <input type="email" id="email-registro" placeholder="Seu E-mail">
+        <input type="password" id="password-registro" placeholder="Sua Senha">
+        <button type="submit">Registrar</button>
+      </form>
+    </section>
+  </main>
+  <script>
+    function validarLogin(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+      const email = document.getElementById('email-login').value;
+      const senha = document.getElementById('password-login').value;
+  
+      if (email === '' || senha === '') {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      // Aqui você pode adicionar a lógica de autenticação do usuário
+      // Se o login for bem-sucedido, redirecione para telaPrincipal.html
+      window.location.href = 'telaPrincipal.html';
+    }
+  
+    function validarRegistro(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+      const email = document.getElementById('email-registro').value;
+      const senha = document.getElementById('password-registro').value;
+  
+      if (email === '' || senha === '') {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      // Aqui você pode adicionar a lógica de registro do usuário
+      // Se o registro for bem-sucedido, redirecione para telaPrincipal.html ou exiba uma mensagem de sucesso
+      window.location.href = 'telaPrincipal.html';
+    }
+  </script>
 </body>
 </html>
